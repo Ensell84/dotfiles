@@ -19,5 +19,6 @@ linkit "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 linkit "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
 linkit "$HOME/dotfiles/kitty" "$HOME/.config/kitty"
 linkit "$HOME/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+linkit "$HOME/dotfiles/.wezterm.lua" "$HOME/.wezterm.lua"
 
 log "All tasks completed."
