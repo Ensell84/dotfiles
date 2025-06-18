@@ -26,10 +26,10 @@ sudo grubby --update-kernel=ALL --args="random.trust_cpu=on rcu_nocbs=all rcutre
 ## Powertop
 
 ```bash
-sudo pacmnan -Syu powertop
+sudo pacman -Syu powertop
 ```
 
-Run powertop.sh(callibration + auto-tune service):
+Run `powertop.sh`(callibration + auto-tune service):
 ```bash
 source powertop.sh
 ```
