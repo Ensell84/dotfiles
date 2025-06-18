@@ -17,8 +17,9 @@ linkit() {
 linkit "$HOME/dotfiles/default.conf" "/etc/keyd/default.conf"
 linkit "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 linkit "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
-linkit "$HOME/dotfiles/kitty" "$HOME/.config/kitty"
 linkit "$HOME/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
-linkit "$HOME/dotfiles/.wezterm.lua" "$HOME/.wezterm.lua"
+
+mkdir $HOME/.config/foot
+linkit "$HOME/dotfiles/foot.ini" "$HOME/.config/foot/foot.ini"
 
 log "All tasks completed."

@@ -20,22 +20,18 @@ sudo systemctl enable --now keyd
 ## Kernel params
 
 ```bash
-sudo grubby --update-kernel=ALL --args="random.trust_cpu=on module_blacklist=ideapad_laptop rcu_nocbs=all rcutree.enable_rcu_lazy=1 amdgpu.abmlevel=0"
+sudo grubby --update-kernel=ALL --args="random.trust_cpu=on rcu_nocbs=all rcutree.enable_rcu_lazy=1 amdgpu.abmlevel=0"
 ```
 
 ## Powertop
 
 ```bash
-sudo dnf install powertop
-sudo powertop --calibrate
+sudo pacmnan -Syu powertop
 ```
 
-After calibration:
-
+Run powertop.sh(callibration + auto-tune service):
 ```bash
-sudo ln -nfs $HOME/dotfiles/powertop-auto-tune.service /etc/systemd/system/powertop-auto-tune.service
-sudo systemctl daemon-reload
-sudo systemctl enable powertop-auto-tune.service
+source powertop.sh
 ```
 
 ## Rclone sync
