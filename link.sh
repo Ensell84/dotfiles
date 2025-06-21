@@ -14,13 +14,13 @@ linkit() {
   fi
 }
 
-linkit "./default.conf" "/etc/keyd/default.conf"
-linkit "./.bashrc" "$HOME/.bashrc"
-linkit "./nvim" "$HOME/.config/nvim"
-linkit "./.tmux.conf" "$HOME/.tmux.conf"
-linkit "./tlp.conf" "/etc/tlp.conf"
+linkit "$HOME/dotfiles/configs/default.conf" "/etc/keyd/default.conf"
+linkit "$HOME/dotfiles/configs/.bashrc" "$HOME/.bashrc"
+linkit "$HOME/dotfiles/configs/nvim" "$HOME/.config/nvim"
+linkit "$HOME/dotfiles/configs/.tmux.conf" "$HOME/.tmux.conf"
+linkit "$HOME/dotfiles/configs/tlp.conf" "/etc/tlp.conf"
 
 mkdir $HOME/.config/foot
-linkit "$HOME/dotfiles/foot.ini" "$HOME/.config/foot/foot.ini"
+linkit "$HOME/dotfiles/configs/foot.ini" "$HOME/.config/foot/foot.ini"
 
 log "All tasks completed."
