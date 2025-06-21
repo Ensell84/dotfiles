@@ -37,3 +37,9 @@ source powertop.sh
 ## Rclone sync
 
 > TODO
+
+## Apps:
+
+```bash
+sudo pacman -Syu kdegraphics-thumbnailers bluez bluez-utils gwenview okular bash-completion foot btop tlp
+```

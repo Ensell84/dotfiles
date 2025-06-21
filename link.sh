@@ -14,10 +14,11 @@ linkit() {
   fi
 }
 
-linkit "$HOME/dotfiles/default.conf" "/etc/keyd/default.conf"
-linkit "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
-linkit "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
-linkit "$HOME/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+linkit "./default.conf" "/etc/keyd/default.conf"
+linkit "./.bashrc" "$HOME/.bashrc"
+linkit "./nvim" "$HOME/.config/nvim"
+linkit "./.tmux.conf" "$HOME/.tmux.conf"
+linkit "./tlp.conf" "/etc/tlp.conf"
 
 mkdir $HOME/.config/foot
 linkit "$HOME/dotfiles/foot.ini" "$HOME/.config/foot/foot.ini"
