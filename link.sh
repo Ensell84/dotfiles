@@ -19,8 +19,6 @@ linkit "$HOME/dotfiles/configs/.bashrc" "$HOME/.bashrc"
 linkit "$HOME/dotfiles/configs/nvim" "$HOME/.config/nvim"
 linkit "$HOME/dotfiles/configs/.tmux.conf" "$HOME/.tmux.conf"
 linkit "$HOME/dotfiles/configs/tlp.conf" "/etc/tlp.conf"
-
-mkdir $HOME/.config/foot
-linkit "$HOME/dotfiles/configs/foot.ini" "$HOME/.config/foot/foot.ini"
+linkit "$HOME/dotfiles/configs/config" "$HOME/.config/ghostty/config"
 
 log "All tasks completed."
