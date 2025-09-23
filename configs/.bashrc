@@ -12,6 +12,11 @@ alias p='sudo pacman'
 alias sdn='sudo shutdown now'
 alias r='ranger'
 
+# Rclone one-way sync aliases
+alias gsync-doc='rclone sync $HOME/Documents gdrive:Documents --drive-acknowledge-abuse --progress'
+alias gsync-desk='rclone sync $HOME/Desktop gdrive:Desktop --drive-acknowledge-abuse --progress'
+alias gsync='gsync-doc && gsync-desk'
+
 # https://gist.github.com/ckabalan/2732cf6368a0adfbe55f03be33286ab1
 function set_bash_prompt () {
 	# Color codes for easy prompt building
