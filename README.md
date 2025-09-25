@@ -61,5 +61,5 @@ Alias added to `.bashrc` - `gsync` to do manual sync.
 ## Apps:
 
 ```bash
-sudo pacman -Syu bash-completion btop tlp powertop ghostty neovim gopls lua-language-server ttf-jetbrains-mono-nerd ttf-jetbrains-mono rclone crontab vi
+sudo pacman -Syu bash-completion btop tlp powertop ghostty neovim gopls lua-language-server ttf-jetbrains-mono-nerd ttf-jetbrains-mono rclone crontab vi wl-clipboard impala
 ```
