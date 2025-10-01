@@ -1,0 +1,7 @@
+[language-server.gopls]
+command = "gopls"
+args = ["serve"]
+
+[[language]]
+name = "go"
+language-servers = [ "gopls" ]

@@ -1,0 +1,7 @@
+theme = "ayu_evolve"
+
+[editor]
+clipboard-provider = "wayland"
+
+[editor.file-picker]
+hidden = false
