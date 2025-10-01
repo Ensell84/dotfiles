@@ -11,6 +11,7 @@ alias grep='grep --color=auto'
 alias p='sudo pacman'
 alias sdn='sudo shutdown now'
 alias r='ranger'
+alias hx='helix'
 
 # Rclone one-way sync aliases
 alias gsync-doc='rclone sync $HOME/Documents gdrive:Documents --drive-acknowledge-abuse --progress'
@@ -58,6 +59,8 @@ function set_bash_prompt () {
 
 # Tell Bash to run the above function for every prompt
 export PROMPT_COMMAND=set_bash_prompt
+
+export GPG_TTY=$(tty)
 
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then

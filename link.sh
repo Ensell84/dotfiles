@@ -14,11 +14,13 @@ linkit() {
   fi
 }
 
-linkit "$HOME/dotfiles/configs/default.conf" "/etc/keyd/default.conf"
+linkit "$HOME/dotfiles/configs/keyd" "/etc/keyd"
 linkit "$HOME/dotfiles/configs/.bashrc" "$HOME/.bashrc"
 linkit "$HOME/dotfiles/configs/nvim" "$HOME/.config/nvim"
-linkit "$HOME/dotfiles/configs/.tmux.conf" "$HOME/.tmux.conf"
 linkit "$HOME/dotfiles/configs/tlp.conf" "/etc/tlp.conf"
-linkit "$HOME/dotfiles/configs/config" "$HOME/.config/ghostty/config"
+linkit "$HOME/dotfiles/configs/foot" "$HOME/.config/foot"
+linkit "$HOME/dotfiles/configs/fuzzel" "$HOME/.config/fuzzel"
+linkit "$HOME/dotfiles/configs/niri" "$HOME/.config/niri"
+linkit "$HOME/dotfiles/helix" "$HOME/.config/helix"
 
 log "All tasks completed."
