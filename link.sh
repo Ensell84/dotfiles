@@ -21,6 +21,7 @@ linkit "$HOME/dotfiles/configs/tlp.conf" "/etc/tlp.conf"
 linkit "$HOME/dotfiles/configs/foot" "$HOME/.config/foot"
 linkit "$HOME/dotfiles/configs/fuzzel" "$HOME/.config/fuzzel"
 linkit "$HOME/dotfiles/configs/niri" "$HOME/.config/niri"
-linkit "$HOME/dotfiles/helix" "$HOME/.config/helix"
+linkit "$HOME/dotfiles/configs/helix" "$HOME/.config/helix"
+linkit "$HOME/dotfiles/configs/swaylock" "$HOME/.config/swaylock"
 
 log "All tasks completed."

@@ -1,0 +1,21 @@
+color=000000
+show-failed-attempts
+ignore-empty-password
+font=JetBrains Mono
+indicator-thickness=7
+indicator-radius=40
+
+inside-clear-color=000000ff
+inside-ver-color=7fc8ff33
+inside-wrong-color=9b000033
+
+ring-color=7fc8ffaa
+ring-clear-color=7fc8ff33
+ring-ver-color=7fc8ffaa
+ring-wrong-color=9b0000aa
+
+text-color=ffffffee
+text-clear-color=ffffffaa
+text-ver-color=ffffffee
+text-wrong-color=9b0000ee
+
