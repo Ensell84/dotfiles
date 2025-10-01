@@ -139,7 +139,6 @@ layout {
 
 spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
 
-//spawn-at-startup "waybar"
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay {
@@ -168,6 +167,16 @@ window-rule {
 window-rule {
     match app-id="firefox"
     open-maximized true
+}
+
+window-rule {
+    match app-id="org.gnome.NautilusPreviewer"
+    open-floating true
+}
+
+window-rule {
+    geometry-corner-radius 5
+    clip-to-geometry true
 }
 
 binds {
