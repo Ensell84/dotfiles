@@ -1,4 +1,4 @@
-theme = Pnevma
+theme = Xcode Dark hc
 
 gtk-wide-tabs = false
 gtk-titlebar-hide-when-maximized = true
@@ -6,4 +6,5 @@ gtk-toolbar-style = flat
 
 shell-integration-features = sudo, ssh-env
 
-window-title-font-family = JetBrainsMono Nerd Font
+font-family = 0xProto Nerd Font
+window-title-font-family = 0xProto Nerd Font

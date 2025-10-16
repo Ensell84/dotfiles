@@ -11,10 +11,8 @@ source link.sh
 ## Keyd
 
 ```bash
-git clone https://github.com/rvaiya/keyd
-cd keyd
-make && sudo make install
-sudo systemctl enable --now keyd
+sudo pacman -Syu keyd
+sudo systemctl enable --now keyd.service
 ```
 
 ## Kernel params
@@ -61,9 +59,10 @@ Alias added to `.bashrc` - `gsync` to do manual sync.
 ## Apps:
 
 ```bash
-sudo pacman -Syu bash-completion btop tlp powertop gopls lua-language-server ttf-jetbrains-mono-nerd ttf-jetbrains-mono rclone crontab vi wl-clipboard impala
+sudo pacman -Rns yelp orca gnome-weather gnome-user-docs gnome-user-share gnome-tour gnome-software gnome-maps gnome-contacts epiphany malcontent
 ```
 
 ```bash
-sudo pacman -Syu loupe nautilus papers sushi
+sudo pacman -Syu git wl-clipboard btop powertop tlp bash-completion gopls lua-language-server neovim telegram-desktop ttf-0xproto-nerd impala ripgrep fd
+sudo systemctl enable --now tlp.service
 ```
