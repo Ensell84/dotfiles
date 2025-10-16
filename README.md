@@ -63,6 +63,6 @@ sudo pacman -Rns yelp orca gnome-weather gnome-user-docs gnome-user-share gnome-
 ```
 
 ```bash
-sudo pacman -Syu git wl-clipboard btop powertop tlp bash-completion gopls lua-language-server neovim telegram-desktop ttf-0xproto-nerd impala ripgrep fd
+sudo pacman -Syu git wl-clipboard btop powertop tlp bash-completion gopls lua-language-server neovim telegram-desktop ttf-0xproto-nerd impala ripgrep fd fzf tmux
 sudo systemctl enable --now tlp.service
 ```

@@ -5,6 +5,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source /usr/share/fzf/key-bindings.bash
+
+if [ -z "$TMUX" ] && [ "$TERM" != "linux" ]; then
+    tmux attach-session -t : || tmux new-session
+fi
+
+alias ts='tmux attach-session -t : || tmux new-session'
+
 alias ls='ls -lah --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 

@@ -1,5 +1,7 @@
 theme = Xcode Dark hc
 
+mouse-scroll-multiplier = 0.25
+
 gtk-wide-tabs = false
 gtk-titlebar-hide-when-maximized = true
 gtk-toolbar-style = flat
