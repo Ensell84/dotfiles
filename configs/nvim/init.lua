@@ -97,7 +97,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ "folke/todo-comments.nvim", opts = {} },
+		{ "folke/todo-comments.nvim", opts = {}, event = "VeryLazy" },
 		{
 			'rose-pine/neovim',
 			lazy = false,
@@ -116,11 +116,13 @@ require("lazy").setup({
 					topdelete = { text = '‾' },
 					changedelete = { text = '~' },
 				}
-			}
+			},
+			event = { "BufReadPre", "BufNewFile" },
 		},
 		{
 			'echasnovski/mini.nvim',
 			version = false,
+			event = "VeryLazy",
 			config = function()
 				require('mini.statusline').setup({
 					use_icons = true,
@@ -130,11 +132,12 @@ require("lazy").setup({
 				end
 			end,
 		},
-		{ 'williamboman/mason.nvim', config = true },
-		{ 'j-hui/fidget.nvim', opts = {} },
+		{ 'williamboman/mason.nvim', config = true, cmd = 'Mason'},
+		{ 'j-hui/fidget.nvim', opts = {}, event = "LspAttach"},
 		{
 			'nvim-treesitter/nvim-treesitter',
 			build = ':TSUpdate',
+			event = { "BufReadPre", "BufNewFile" },
 			opts = {
 				ensure_installed = { 'bash', 'go', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
 				sync_install = false,
@@ -146,6 +149,7 @@ require("lazy").setup({
 		{
 			'Saghen/blink.cmp',
 			version = '*',
+			event = "InsertEnter",
 			opts = {
 				keymap = {
 					preset = "default",
@@ -217,9 +221,7 @@ require("lazy").setup({
 		},
 		{
 			'neovim/nvim-lspconfig',
-			dependencies = {
-				'williamboman/mason.nvim',
-			},
+			event = { "BufReadPre", "BufNewFile" },
 			config = function()
 				vim.lsp.enable({'lua_ls', 'gopls', 'clangd'})
 				vim.api.nvim_create_autocmd('LspAttach', {
