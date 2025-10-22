@@ -61,8 +61,7 @@ output "eDP-1" {
 
     variable-refresh-rate
 
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1.75
+    scale 2
 
     transform "normal"
 
