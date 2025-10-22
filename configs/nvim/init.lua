@@ -3,6 +3,11 @@ vim.g.maplocalleader = ' '
 
 vim.o.winborder = 'single'
 
+--vim.o.netrw
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 30
+vim.g.netrw_liststyle = 1
+
 vim.o.number = true
 vim.o.mouse = 'a'
 
@@ -86,7 +91,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
+			{ out,                            "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -97,12 +102,23 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ "folke/todo-comments.nvim", opts = {}, event = "VeryLazy" },
+		{ "folke/todo-comments.nvim", opts = {},     event = "VeryLazy" },
 		{
 			'rose-pine/neovim',
 			lazy = false,
 			priority = 1000,
 			config = function()
+				require('rose-pine').setup {
+					styles = {
+						italic = false,
+					},
+					palette = {
+						main = {
+							base = '#0a0a0a',
+							overlay = '#151515',
+						},
+					},
+				}
 				vim.cmd([[colorscheme rose-pine]])
 			end,
 		},
@@ -132,8 +148,8 @@ require("lazy").setup({
 				end
 			end,
 		},
-		{ 'williamboman/mason.nvim', config = true, cmd = 'Mason'},
-		{ 'j-hui/fidget.nvim', opts = {}, event = "LspAttach"},
+		{ 'williamboman/mason.nvim',  config = true, cmd = 'Mason' },
+		{ 'j-hui/fidget.nvim',        opts = {},     event = "LspAttach" },
 		{
 			'nvim-treesitter/nvim-treesitter',
 			build = ':TSUpdate',
@@ -199,7 +215,7 @@ require("lazy").setup({
 						layout_strategy = 'horizontal',
 						layout_config = {
 							vertical = { width = 0.5 },
-							horizontal = {width = 0.9 , prompt_position = 'top', preview_width = 0.6},
+							horizontal = { width = 0.9, prompt_position = 'top', preview_width = 0.6 },
 						},
 					},
 				}
@@ -223,7 +239,7 @@ require("lazy").setup({
 			'neovim/nvim-lspconfig',
 			event = { "BufReadPre", "BufNewFile" },
 			config = function()
-				vim.lsp.enable({'lua_ls', 'gopls', 'clangd'})
+				vim.lsp.enable({ 'lua_ls', 'gopls', 'clangd' })
 				vim.api.nvim_create_autocmd('LspAttach', {
 					desc = 'lsp actions',
 					callback = function(event)
@@ -256,7 +272,7 @@ require("lazy").setup({
 				{ "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>" },
 				{ "<leader>tr", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>" },
 				{ "<leader>tl", "<cmd>Trouble loclist toggle<cr>" },
-				{ "<leader>o", "<cmd>Trouble qflist toggle<cr>" },
+				{ "<leader>o",  "<cmd>Trouble qflist toggle<cr>" },
 			},
 		}
 	},
