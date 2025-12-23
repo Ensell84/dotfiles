@@ -7,9 +7,11 @@
 
 source /usr/share/fzf/key-bindings.bash
 
-if [ -z "$TMUX" ] && [ "$TERM" != "linux" ]; then
-    tmux attach-session -t : || tmux new-session
-fi
+export PATH="$HOME/.emacs.d/bin/:$PATH"
+
+#if [ -z "$TMUX" ] && [ "$TERM" != "linux" ]; then
+#    tmux attach-session -t : || tmux new-session
+#fi
 
 alias ts='tmux attach-session -t : || tmux new-session'
 

@@ -58,11 +58,22 @@ Alias added to `.bashrc` - `gsync` to do manual sync.
 
 ## Apps:
 
+Gnome apps to remove:
 ```bash
 sudo pacman -Rns yelp orca gnome-weather gnome-user-docs gnome-user-share gnome-tour gnome-software gnome-maps gnome-contacts epiphany malcontent
 ```
 
 ```bash
-sudo pacman -Syu git wl-clipboard btop powertop tlp bash-completion gopls lua-language-server neovim telegram-desktop ttf-0xproto-nerd impala ripgrep fd fzf tmux
+sudo pacman -Syu noto-fonts noto-fonts-emoji ttf-bigblueterminal-nerd ttf-fira-code ttf-firacode-nerd
+sudo pacman -Syu mako grim slurp cliphist xdg-utils waybar fuzzel brightnessctl \
+                 usbmuxd idevicepair \
+                 udiskie \
+                 polkit-kde-agent \
+                 qt5-wayland qt6-wayland qt5ct qt6ct \
+                 hyprcursor hypridle hyprlock
+
+sudo pacman -Syu papers loupe showtime gst-libav
+sudo pacman -Syu man git wl-clipboard libqalculate btop powertop tlp bash-completion neovim telegram-desktop impala ripgrep fd fzf tmux
+sudo pacman -Syu go gopls lua-language-server golangci-lint
 sudo systemctl enable --now tlp.service
 ```

@@ -1,0 +1,13 @@
+anchor=top-right
+margin=10,10,10,10
+padding=6,8
+max-visible=3
+
+background-color=#000000cc
+text-color=#ffffff
+border-color=#ffffff22
+border-size=1
+border-radius=4
+
+font=FiraCode Nerd Font 11
+default-timeout=5000

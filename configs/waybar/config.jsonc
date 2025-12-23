@@ -1,0 +1,64 @@
+{
+	"layer": "top",
+	"position": "bottom",
+	"height": 20,
+	"modules-left": [
+		"hyprland/workspaces",
+		"tray",
+	],
+	"modules-center": [
+		"clock",
+	],
+	"modules-right": [
+		"cpu",
+		"backlight",
+		"pulseaudio",
+		"network",
+		"battery",
+	],
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"warp-on-scroll": false,
+		"format": "{name}",
+		"persistent-workspaces": {
+			"*":9
+		}
+	},
+	"tray": {
+		"spacing": 10,
+	},
+	"clock": {
+		"interval": 60,
+		"format": "{:%H:%M}"
+	},
+	"cpu": {
+		"format": "CPU {usage}%",
+		"tooltip": false
+	},
+	"backlight": {
+		"format": "BRI {percent}%",
+	},
+	"battery": {
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}%",
+		"format-charging": "<span color='#e88939'>\u26a1</span> {capacity}%",
+	},
+	"network": {
+		"family": "ipv4",
+		"format-wifi": "<span color='#589df6'></span> <span color='gray'>{essid}</span>",
+		"format-ethernet": "(eth)",
+		"format-linked": "{ifname} (No IP)",
+		"format-disconnected": "Disconnected ⚠",
+		"interval": 5,
+		"on-click": "iwctl station wlan0 scan"
+	},
+	"pulseaudio": {
+		"format": "VOL {volume}%",
+		"format-muted": "VOL  0%",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+	},
+}
