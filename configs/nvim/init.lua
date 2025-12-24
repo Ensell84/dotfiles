@@ -1,7 +1,11 @@
+pcall(function() vim.loader.enable(true) end)
+
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
-vim.o.winborder = 'single'
 
 --vim.o.netrw
 vim.g.netrw_banner = 0
@@ -133,7 +137,7 @@ require("lazy").setup({
 					changedelete = { text = '~' },
 				}
 			},
-			event = { "BufReadPre", "BufNewFile" },
+			event = { "BufReadPost", "BufNewFile" },
 		},
 		{
 			'echasnovski/mini.nvim',
@@ -163,7 +167,7 @@ require("lazy").setup({
 			},
 		},
 		{
-			'Saghen/blink.cmp',
+			'saghen/blink.cmp',
 			version = '*',
 			event = "InsertEnter",
 			opts = {
@@ -199,41 +203,36 @@ require("lazy").setup({
 					ghost_text = { enabled = true },
 				},
 				sources = {
-					default = { 'lsp', 'path', 'snippets' },
+					default = { 'lsp', 'path', 'snippets', 'buffer' },
 				},
 
-				fuzzy = { implementation = 'lua' },
+				fuzzy = { implementation = "prefer_rust_with_warning" },
 				signature = { enabled = true },
 			},
 		},
 		{
 			'nvim-telescope/telescope.nvim',
 			dependencies = { 'nvim-lua/plenary.nvim' },
-			config = function()
-				require('telescope').setup {
-					defaults = {
-						layout_strategy = 'horizontal',
-						layout_config = {
-							vertical = { width = 0.5 },
-							horizontal = { width = 0.9, prompt_position = 'top', preview_width = 0.6 },
-						},
+			keys = {
+				{ "<leader>f", function() require("telescope.builtin").find_files() end },
+				{ "<leader>/", function() require("telescope.builtin").live_grep() end },
+				{ "<leader>b", function() require("telescope.builtin").buffers() end },
+				{ "<leader>gl", function() require("telescope.builtin").git_commits() end },
+				{ "<leader>gb", function() require("telescope.builtin").git_branches() end },
+				{ "<leader>gs", function() require("telescope.builtin").git_status() end },
+				{ "<leader>\'", function() require("telescope.builtin").marks() end },
+				{ "<leader>j", function() require("telescope.builtin").jumplist() end },
+				{ "<leader>\"", function() require("telescope.builtin").registers() end },
+			},
+			opts = {
+				defaults = {
+					layout_strategy = "horizontal",
+					layout_config = {
+						vertical = { width = 0.5 },
+						horizontal = { width = 0.9, prompt_position = "top", preview_width = 0.6 },
 					},
-				}
-
-				local builtin = require('telescope.builtin')
-				vim.keymap.set('n', '<leader>f', builtin.find_files)
-				vim.keymap.set('n', '<leader>b', builtin.buffers)
-				vim.keymap.set('n', '<leader>/', builtin.live_grep)
-				vim.keymap.set('n', '<leader>h', builtin.help_tags)
-
-				vim.keymap.set('n', '<leader>gc', builtin.git_commits)
-				vim.keymap.set('n', '<leader>gb', builtin.git_branches)
-				vim.keymap.set('n', '<leader>gs', builtin.git_status)
-
-				vim.keymap.set('n', '<leader>"', builtin.registers)
-				vim.keymap.set('n', '<leader>\'', builtin.marks)
-				vim.keymap.set('n', '<leader>j', builtin.jumplist)
-			end,
+				},
+			},
 		},
 		{
 			'neovim/nvim-lspconfig',
