@@ -67,6 +67,13 @@ vim.keymap.set('n', '<leader>c', ':tabclose<CR>')
 vim.keymap.set('n', '<C-h>', ':tabprev<CR>')
 vim.keymap.set('n', '<C-l>', ':tabnext<CR>')
 
+vim.keymap.set('n', '<M-,>', '<C-o>')
+
+vim.keymap.set('i', '<M-h>', '<C-left>')
+vim.keymap.set('i', '<M-l>', '<C-right>')
+vim.keymap.set('i', '<M-j>', '<C-o>}')
+vim.keymap.set('i', '<M-k>', '<C-o>{')
+
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 vim.diagnostic.config({
@@ -107,6 +114,15 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ "folke/todo-comments.nvim", opts = {},     event = "VeryLazy" },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 		{
 			'rose-pine/neovim',
 			lazy = false,
@@ -203,7 +219,14 @@ require("lazy").setup({
 					ghost_text = { enabled = true },
 				},
 				sources = {
-					default = { 'lsp', 'path', 'snippets', 'buffer' },
+					default = { 'lsp', 'lazydev', 'path', 'snippets', 'buffer' },
+					providers = {
+						lazydev = {
+							name = "LazyDev",
+							module = "lazydev.integrations.blink",
+							score_offset = 100,
+						},
+					},
 				},
 
 				fuzzy = { implementation = "prefer_rust_with_warning" },
@@ -214,14 +237,14 @@ require("lazy").setup({
 			'nvim-telescope/telescope.nvim',
 			dependencies = { 'nvim-lua/plenary.nvim' },
 			keys = {
-				{ "<leader>f", function() require("telescope.builtin").find_files() end },
-				{ "<leader>/", function() require("telescope.builtin").live_grep() end },
-				{ "<leader>b", function() require("telescope.builtin").buffers() end },
+				{ "<leader>f",  function() require("telescope.builtin").find_files() end },
+				{ "<M-/>",      function() require("telescope.builtin").live_grep() end },
+				{ "<M-b>",      function() require("telescope.builtin").buffers() end },
 				{ "<leader>gl", function() require("telescope.builtin").git_commits() end },
 				{ "<leader>gb", function() require("telescope.builtin").git_branches() end },
 				{ "<leader>gs", function() require("telescope.builtin").git_status() end },
 				{ "<leader>\'", function() require("telescope.builtin").marks() end },
-				{ "<leader>j", function() require("telescope.builtin").jumplist() end },
+				{ "<leader>j",  function() require("telescope.builtin").jumplist() end },
 				{ "<leader>\"", function() require("telescope.builtin").registers() end },
 			},
 			opts = {
@@ -238,7 +261,6 @@ require("lazy").setup({
 			'neovim/nvim-lspconfig',
 			event = { "BufReadPre", "BufNewFile" },
 			config = function()
-
 				vim.lsp.config("*", {
 					capabilities = require("blink.cmp").get_lsp_capabilities(),
 				})
@@ -269,7 +291,7 @@ require("lazy").setup({
 
 						local builtin = require('telescope.builtin')
 						map('K', vim.lsp.buf.hover)
-						map('gtd', builtin.lsp_definitions)
+						map('<M-.>', builtin.lsp_definitions)
 						map('gtD', vim.lsp.buf.declaration)
 						map('gti', builtin.lsp_implementations)
 						map('gr', vim.lsp.buf.rename)
@@ -285,7 +307,6 @@ require("lazy").setup({
 								vim.lsp.buf.format({ async = false })
 							end,
 						})
-
 					end,
 				})
 			end,
@@ -304,35 +325,12 @@ require("lazy").setup({
 			},
 		},
 		{
-			"nvim-neotest/neotest",
-			ft = "go",
-			dependencies = {
-				"nvim-neotest/nvim-nio",
-				"nvim-lua/plenary.nvim",
-				"antoinemadec/FixCursorHold.nvim",
-				"nvim-treesitter/nvim-treesitter",
-				"nvim-neotest/neotest-go",
-			},
-			keys = {
-				{ "<leader>tn", function() require("neotest").run.run() end, desc = "Test nearest" },
-				{ "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Test file" },
-				{ "<leader>ta", function() require("neotest").run.run(vim.fn.getcwd()) end, desc = "Test all (cwd)" },
-				{ "<leader>tp", function() require("neotest").run.run(vim.fn.expand("%:p:h")) end, desc = "Test package" },
-				{ "<leader>tS", function() require("neotest").summary.toggle() end, desc = "Test summary" },
-				{ "<leader>to", function() require("neotest").output.open({ enter = true }) end, desc = "Test output" },
-				{ "<leader>tx", function() require("neotest").run.stop() end, desc = "Test stop" },
-			},
+			'goolord/alpha-nvim',
+			dependencies = { 'nvim-mini/mini.icons' },
 			config = function()
-				require("neotest").setup({
-					adapters = {
-						require("neotest-go")({
-							-- optional:
-							-- recursive_run = true, -- run `go test ./...` style from a package [web:139]
-						}),
-					},
-				})
-			end,
-		}
+				require 'alpha'.setup(require 'alpha.themes.startify'.config)
+			end
+		},
 	},
 	checker = { enabled = true },
 })
