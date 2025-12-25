@@ -7,6 +7,8 @@
 
 source /usr/share/fzf/key-bindings.bash
 
+
+export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$HOME/.emacs.d/bin/:$PATH"
 
 #if [ -z "$TMUX" ] && [ "$TERM" != "linux" ]; then

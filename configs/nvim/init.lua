@@ -238,7 +238,28 @@ require("lazy").setup({
 			'neovim/nvim-lspconfig',
 			event = { "BufReadPre", "BufNewFile" },
 			config = function()
+
+				vim.lsp.config("*", {
+					capabilities = require("blink.cmp").get_lsp_capabilities(),
+				})
+
+				vim.lsp.config("gopls", {
+					cmd = { "gopls" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					root_dir = function(bufnr, on_dir)
+						on_dir(vim.fs.root(bufnr, { "go.work", "go.mod", ".git" }))
+					end,
+					settings = {
+						gopls = {
+							analyses = { unusedparams = true },
+							staticcheck = true,
+							gofumpt = true,
+						},
+					},
+				})
+
 				vim.lsp.enable({ 'lua_ls', 'gopls', 'clangd' })
+
 				vim.api.nvim_create_autocmd('LspAttach', {
 					desc = 'lsp actions',
 					callback = function(event)
@@ -257,6 +278,14 @@ require("lazy").setup({
 						map('gtt', builtin.lsp_type_definitions)
 						map('gs', builtin.lsp_document_symbols)
 						map('gw', builtin.lsp_dynamic_workspace_symbols)
+
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = event.buf,
+							callback = function()
+								vim.lsp.buf.format({ async = false })
+							end,
+						})
+
 					end,
 				})
 			end,
@@ -273,6 +302,36 @@ require("lazy").setup({
 				{ "<leader>tl", "<cmd>Trouble loclist toggle<cr>" },
 				{ "<leader>o",  "<cmd>Trouble qflist toggle<cr>" },
 			},
+		},
+		{
+			"nvim-neotest/neotest",
+			ft = "go",
+			dependencies = {
+				"nvim-neotest/nvim-nio",
+				"nvim-lua/plenary.nvim",
+				"antoinemadec/FixCursorHold.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"nvim-neotest/neotest-go",
+			},
+			keys = {
+				{ "<leader>tn", function() require("neotest").run.run() end, desc = "Test nearest" },
+				{ "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Test file" },
+				{ "<leader>ta", function() require("neotest").run.run(vim.fn.getcwd()) end, desc = "Test all (cwd)" },
+				{ "<leader>tp", function() require("neotest").run.run(vim.fn.expand("%:p:h")) end, desc = "Test package" },
+				{ "<leader>tS", function() require("neotest").summary.toggle() end, desc = "Test summary" },
+				{ "<leader>to", function() require("neotest").output.open({ enter = true }) end, desc = "Test output" },
+				{ "<leader>tx", function() require("neotest").run.stop() end, desc = "Test stop" },
+			},
+			config = function()
+				require("neotest").setup({
+					adapters = {
+						require("neotest-go")({
+							-- optional:
+							-- recursive_run = true, -- run `go test ./...` style from a package [web:139]
+						}),
+					},
+				})
+			end,
 		}
 	},
 	checker = { enabled = true },

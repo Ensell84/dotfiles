@@ -64,7 +64,7 @@ sudo pacman -Rns yelp orca gnome-weather gnome-user-docs gnome-user-share gnome-
 ```
 
 ```bash
-sudo pacman -Syu noto-fonts noto-fonts-emoji ttf-bigblueterminal-nerd ttf-fira-code ttf-firacode-nerd
+sudo pacman -Syu noto-fonts noto-fonts-emoji ttf-bigblueterminal-nerd ttf-fira-code ttf-firacode-nerd ttf-cascadia-code-nerd ttf-cascadia-mono-nerd
 sudo pacman -Syu mako grim slurp cliphist xdg-utils waybar fuzzel brightnessctl \
                  usbmuxd idevicepair \
                  udiskie \
