@@ -74,6 +74,11 @@ vim.keymap.set('i', '<M-l>', '<C-right>')
 vim.keymap.set('i', '<M-j>', '<C-o>}')
 vim.keymap.set('i', '<M-k>', '<C-o>{')
 
+vim.keymap.set('i', '<M-a>', '<Home>')
+vim.keymap.set('i', '<M-e>', '<End>')
+vim.keymap.set('i', '<M-BS>', '<C-w>')
+vim.keymap.set('i', '<M-d>', '<C-o>dw')
+
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 vim.diagnostic.config({
@@ -294,8 +299,8 @@ require("lazy").setup({
 						map('<M-.>', builtin.lsp_definitions)
 						map('gtD', vim.lsp.buf.declaration)
 						map('gti', builtin.lsp_implementations)
-						map('gr', vim.lsp.buf.rename)
-						map('ga', vim.lsp.buf.code_action)
+						map('<M-r>', vim.lsp.buf.rename)
+						map('<M-CR>', vim.lsp.buf.code_action)
 						map('gtr', builtin.lsp_references)
 						map('gtt', builtin.lsp_type_definitions)
 						map('gs', builtin.lsp_document_symbols)
