@@ -28,4 +28,8 @@ linkit "$HOME/dotfiles/configs/mako" "$HOME/.config/mako"
 #linkit "$HOME/dotfiles/configs/swaylock" "$HOME/.config/swaylock"
 #linkit "$HOME/dotfiles/configs/.tmux.conf" "$HOME/.tmux.conf"
 
+mkdir $HOME/.emacs.d
+linkit "$HOME/dotfiles/configs/emacs/init.el" "$HOME/.emacs.d/"
+linkit "$HOME/dotfiles/configs/emacs/early-init.el" "$HOME/.emacs.d/"
+
 log "All tasks completed."
