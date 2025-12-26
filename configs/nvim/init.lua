@@ -129,22 +129,13 @@ require("lazy").setup({
 			},
 		},
 		{
-			'rose-pine/neovim',
+			'projekt0n/github-nvim-theme',
+			name = 'github-theme',
 			lazy = false,
 			priority = 1000,
 			config = function()
-				require('rose-pine').setup {
-					styles = {
-						italic = false,
-					},
-					palette = {
-						main = {
-							base = '#0a0a0a',
-							overlay = '#151515',
-						},
-					},
-				}
-				vim.cmd([[colorscheme rose-pine]])
+				require('github-theme').setup()
+				vim.cmd('colorscheme github_dark_high_contrast')
 			end,
 		},
 		{
