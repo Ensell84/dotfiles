@@ -8,8 +8,11 @@ input {
         xkb {
             layout "us,ru"
             variant "dvorak,"
+			options "grp:ctrl_space_toggle"
         }
         numlock
+		repeat-delay 200
+		repeat-rate 40
     }
 
     touchpad {
@@ -21,7 +24,7 @@ input {
         // drag-lock
         natural-scroll
         // accel-speed 0.2
-        // accel-profile "flat"
+        accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
@@ -50,7 +53,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // https://yalter.github.io/niri/Configuration:-Outputs
@@ -76,20 +79,22 @@ output "eDP-1" {
     // automatically.
     //position x=1280 y=0
 
-    background-color "#000000"
+    backdrop-color "#0a0c0e"
 }
 
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     gaps 5
 
+	background-color "#000000"
+
     center-focused-column "never"
 
     preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-	proportion 1.0
+		proportion 0.33333
+		proportion 0.5
+		proportion 0.66667
+		proportion 1.0
     }
 
     preset-window-heights { 
@@ -136,9 +141,37 @@ layout {
     }
 }
 
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
+recent-windows {
+    // off
+    debounce-ms 750
+    open-delay-ms 150
 
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 10
+        corner-radius 10
+    }
+
+    previews {
+        max-height 320
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+    }
+}
+
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "hyprlock" "before-sleep" "hyprlock"
+spawn-at-startup "foot" "--server"
+spawn-at-startup "waybar"
+spawn-at-startup "mako"
+spawn-at-startup "udiskie"
 
 hotkey-overlay {
     skip-at-startup
@@ -181,9 +214,10 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+T { spawn "foot"; }
+    Mod+T { spawn "footclient"; }
+	Mod+E { spawn "nautilus"; }
     Mod+D { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Super+Shift+L { spawn "hyprlock"; }
 
     // spawn-sh 
 
@@ -192,8 +226,8 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }

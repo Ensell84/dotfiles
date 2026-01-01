@@ -11,6 +11,7 @@ vim.g.maplocalleader = ' '
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
 vim.g.netrw_liststyle = 1
+vim.g.netrw_sort_by = "name"
 
 vim.o.number = true
 vim.o.mouse = 'a'
@@ -276,7 +277,7 @@ require("lazy").setup({
 					},
 				})
 
-				vim.lsp.enable({ 'lua_ls', 'gopls', 'clangd' })
+				vim.lsp.enable({ 'lua_ls', 'gopls', 'clangd', 'ty' })
 
 				vim.api.nvim_create_autocmd('LspAttach', {
 					desc = 'lsp actions',

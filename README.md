@@ -64,7 +64,7 @@ sudo pacman -Rns yelp orca gnome-weather gnome-user-docs gnome-user-share gnome-
 ```
 
 ```bash
-sudo pacman -Syu noto-fonts noto-fonts-emoji ttf-bigblueterminal-nerd ttf-fira-code ttf-firacode-nerd ttf-cascadia-code-nerd ttf-cascadia-mono-nerd
+sudo pacman -Syu noto-fonts noto-fonts-emoji ttf-bigblueterminal-nerd ttf-fira-code ttf-firacode-nerd ttf-cascadia-mono-nerd
 sudo pacman -Syu mako grim slurp cliphist xdg-utils waybar fuzzel brightnessctl \
                  usbmuxd idevicepair \
                  udiskie \
@@ -73,7 +73,7 @@ sudo pacman -Syu mako grim slurp cliphist xdg-utils waybar fuzzel brightnessctl 
                  hyprcursor hypridle hyprlock
 
 sudo pacman -Syu papers loupe showtime gst-libav
-sudo pacman -Syu man git wl-clipboard libqalculate btop powertop tlp bash-completion neovim telegram-desktop impala ripgrep fd fzf tmux
+sudo pacman -Syu man git wl-clipboard libqalculate btop powertop tlp bash-completion neovim telegram-desktop impala ripgrep wiremix fd fzf tmux
 sudo pacman -Syu go gopls lua-language-server golangci-lint
 sudo systemctl enable --now tlp.service
 ```
