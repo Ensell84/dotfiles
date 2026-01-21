@@ -18,7 +18,7 @@ sudo systemctl enable --now keyd.service
 ## Kernel params
 
 ```bash
-random.trust_cpu=on rcu_nocbs=all rcutree.enable_rcu_lazy=1 amdgpu.abmlevel=0
+random.trust_cpu=on rcu_nocbs=all rcutree.enable_rcu_lazy=1 amdgpu.abmlevel=0 i8042.nopnp
 ```
 
 ## Powertop
@@ -66,14 +66,20 @@ sudo pacman -Rns yelp orca gnome-weather gnome-user-docs gnome-user-share gnome-
 ```bash
 sudo pacman -Syu noto-fonts noto-fonts-emoji ttf-bigblueterminal-nerd ttf-fira-code ttf-firacode-nerd ttf-cascadia-mono-nerd
 sudo pacman -Syu mako grim slurp cliphist xdg-utils waybar fuzzel brightnessctl \
-                 usbmuxd idevicepair \
                  udiskie \
                  polkit-kde-agent \
                  qt5-wayland qt6-wayland qt5ct qt6ct \
                  hyprcursor hypridle hyprlock
 
 sudo pacman -Syu papers loupe showtime gst-libav
-sudo pacman -Syu man git wl-clipboard libqalculate btop powertop tlp bash-completion neovim telegram-desktop impala ripgrep wiremix fd fzf tmux
+sudo pacman -Syu man git wl-clipboard libqalculate btop powertop bash-completion neovim telegram-desktop impala bluetui wiremix ripgrep fd fzf tmux
 sudo pacman -Syu go gopls lua-language-server golangci-lint
+```
+
+TLP:
+```bash
+sudo pacman -Syu tlp ethtool smartmontools
 sudo systemctl enable --now tlp.service
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
 ```

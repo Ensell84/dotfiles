@@ -1,7 +1,7 @@
 color=000000
 show-failed-attempts
 ignore-empty-password
-font=JetBrains Mono
+font=FiraCode
 indicator-thickness=7
 indicator-radius=40
 

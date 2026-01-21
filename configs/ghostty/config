@@ -8,5 +8,7 @@ gtk-toolbar-style = flat
 
 shell-integration-features = sudo, ssh-env
 
-font-family = 0xProto Nerd Font
-window-title-font-family = 0xProto Nerd Font
+async-backend = epoll
+
+font-family = CaskaydiaMono Nerd Font
+window-title-font-family = CaskaydiaMono Nerd Font

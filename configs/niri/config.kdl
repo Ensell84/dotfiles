@@ -2,6 +2,17 @@
 
 prefer-no-csd
 
+environment {
+	DISPLAY ":0"
+	GDK_BACKEND "wayland"
+	QT_QPA_PLATFORM "wayland"
+	SDL_VIDEODRIVER "wayland"
+	CLUTTER_BACKEND "wayland"
+	XDG_SESSION_TYPE "wayland"
+	QT_AUTO_SCREEN_SCALE_FACTOR "1"
+	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+}
+
 // https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
@@ -23,7 +34,8 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
+		scroll-factor 0.5
+        accel-speed 0.05
         accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
@@ -167,7 +179,7 @@ recent-windows {
     }
 }
 
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "hyprlock" "before-sleep" "hyprlock"
+spawn-at-startup "hypridle"
 spawn-at-startup "foot" "--server"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
